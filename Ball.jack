@@ -1,0 +1,33 @@
+class Ball{
+    field int x;
+    field int y;
+    field int vx;
+    field int vy;
+    field int r;
+
+    constructor Ball new(int x, int y, int vx, int vy, int r){
+        let x = x;
+        let y = y;
+        let vx = vx;
+        let vy = x;
+        let r = r;
+
+        return this;
+    }
+
+    method void move(){
+        let x = x + vx;
+        let y = y + vy;
+        return;
+    }
+
+    method void draw(){
+        do Screen.setColor(true);
+        do Screen.drawCircle(x, y, r);
+        return;
+    }
+
+    method int getx(){
+        return x;
+    }
+}
