@@ -1,0 +1,22 @@
+class Game{
+    field Ball ball;
+
+    constructor Game new(Ball b){
+        let ball = b;
+        return this;
+    }
+
+    method void gameloop(){
+        while (true) {
+            do Sys.wait(1);
+            do ball.move();
+            do ball.draw();
+            if ((ball.getx() < (0 + 10)) | (ball.getx() > (512 - 10))){
+                do ball.flipvx();
+            } if ((ball.gety() < (15 + 10)) | (ball.gety() > (256 - 10))){
+                do ball.flipvy();
+            }
+        }
+        return;
+    }
+}

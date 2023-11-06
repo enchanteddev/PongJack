@@ -1,0 +1,69 @@
+function Game.new 0
+push constant 1
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push pointer 0
+return
+function Game.gameloop 0
+push argument 0
+pop pointer 0
+label WHILE_EXP0
+push constant 0
+not
+not
+if-goto WHILE_END0
+push constant 1
+call Sys.wait 1
+pop temp 0
+push this 0
+call Ball.move 1
+pop temp 0
+push this 0
+call Ball.draw 1
+pop temp 0
+push this 0
+call Ball.getx 1
+push constant 0
+push constant 10
+add
+lt
+push this 0
+call Ball.getx 1
+push constant 512
+push constant 10
+sub
+gt
+or
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+call Ball.flipvx 1
+pop temp 0
+label IF_FALSE0
+push this 0
+call Ball.gety 1
+push constant 15
+push constant 10
+add
+lt
+push this 0
+call Ball.gety 1
+push constant 256
+push constant 10
+sub
+gt
+or
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 0
+call Ball.flipvy 1
+pop temp 0
+label IF_FALSE1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

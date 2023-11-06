@@ -5,12 +5,12 @@ class Ball{
     field int vy;
     field int r;
 
-    constructor Ball new(int x, int y, int vx, int vy, int r){
-        let x = x;
-        let y = y;
-        let vx = vx;
-        let vy = x;
-        let r = r;
+    constructor Ball new(int x_, int y_, int vx_, int vy_, int r_){
+        let x = x_;
+        let y = y_;
+        let vx = vx_;
+        let vy = vy_;
+        let r = r_;
 
         return this;
     }
@@ -29,5 +29,23 @@ class Ball{
 
     method int getx(){
         return x;
+    }
+
+    method int gety(){
+        return y;
+    }
+
+    method int getr(){
+        return r;
+    }
+    
+    method void flipvx(){
+        let vx = 0 - vx;
+        return;
+    }
+
+    method void flipvy(){
+        let vy = 0 - vy;
+        return;
     }
 }

@@ -1,11 +1,10 @@
 class Main{
     function void main(){
         var Ball ball;
-        var int x;
-        let ball = Ball.new(10, 10, 10 ,10, 10);
-        let x = ball.getx() + 1;
-        do Output.printInt(x);
-        do Output.printInt(ball.getx());
+        var Game x;
+        let ball = Ball.new(50, 50, 1 ,1, 5);
+        let x = Game.new(ball);
+        do x.gameloop();
         return;
     }
 }
