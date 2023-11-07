@@ -19,7 +19,7 @@ class Ball{
         do Screen.setColor(false);
         do Screen.drawCircle(x, y, r);
         let x = x + vx;
-        let y = y + vy;
+        let y = y + vy; 
         do Screen.setColor(true);
         do Screen.drawCircle(x, y, r);
         return;

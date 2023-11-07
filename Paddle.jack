@@ -25,6 +25,7 @@ class Paddle {
 		do Screen.setColor(true);
 		do Screen.drawRectangle(x, y, x+w, y+h);
 		return;
+        
 	}
 
 	method void move () {

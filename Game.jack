@@ -8,7 +8,7 @@ class Game{
         let paddle = p;
         let ai = a;
         return this;
-        
+
     }
 
     method void gameloop(){
@@ -16,7 +16,7 @@ class Game{
         var char key;
         
         var bool exit;
-        
+         
         let exit = false;
         
         while (~(exit)) {
