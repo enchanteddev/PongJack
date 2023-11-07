@@ -6,15 +6,46 @@ class Game{
         return this;
     }
 
+    method void goBack(int x){
+        var int digits;
+        if (x < 10){
+            let digits = 1;
+        } else{ if (x < 100){
+            let digits = 2;
+        } else{ if (x < 1000){
+            let digits = 3;
+        }}}
+        while (~(digits = 0)){
+            do Output.backSpace();
+            let digits = digits - 1;
+        }
+        return;
+    }
+
     method void gameloop(){
+        var int hits;
+        var int lastHits;
+        let hits = 0;
+        let lastHits = 0;
+        do Output.printString("Hits: 0");
         while (true) {
             do Sys.wait(1);
             do ball.move();
             do ball.draw();
-            if ((ball.getx() < (0 + 10)) | (ball.getx() > (512 - 10))){
+
+            if ((ball.getx() < (0 + (2 * ball.getr()))) | (ball.getx() > (512 - (2 * ball.getr())))){
                 do ball.flipvx();
-            } if ((ball.gety() < (15 + 10)) | (ball.gety() > (256 - 10))){
+                let lastHits = hits;
+                let hits = hits + 1;
+                do goBack(lastHits);
+                do Output.printInt(hits);
+
+            } if ((ball.gety() < (15 + (2 * ball.getr()))) | (ball.gety() > (256 - (2 * ball.getr())))){
                 do ball.flipvy();
+                let lastHits = hits;
+                let hits = hits + 1;
+                do goBack(lastHits);
+                do Output.printInt(hits);
             }
         }
         return;
