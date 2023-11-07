@@ -87,11 +87,8 @@ push constant 0
 not
 not
 if-goto WHILE_END0
-push constant 1
+push constant 3
 call Sys.wait 1
-pop temp 0
-push this 0
-call Ball.move 1
 pop temp 0
 push this 0
 call Ball.draw 1

@@ -29,8 +29,8 @@ class Game{
         let lastHits = 0;
         do Output.printString("Hits: 0");
         while (true) {
-            do Sys.wait(1);
-            do ball.move();
+            do Sys.wait(3);
+            // do ball.move();
             do ball.draw();
 
             if ((ball.getx() < (0 + (2 * ball.getr()))) | (ball.getx() > (512 - (2 * ball.getr())))){

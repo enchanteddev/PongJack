@@ -22,6 +22,9 @@ class Ball{
     }
 
     method void draw(){
+        do Screen.setColor(false);
+        do Screen.drawCircle(x, y, r);
+        do move();
         do Screen.setColor(true);
         do Screen.drawCircle(x, y, r);
         return;
