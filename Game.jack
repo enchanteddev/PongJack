@@ -1,0 +1,64 @@
+class Game{
+    field Ball ball;
+    field Paddle paddle;
+    field AI ai;
+    constructor Game new(Ball b, Paddle p,AI a){
+
+        let ball = b;
+        let paddle = p;
+        let ai = a;
+        return this;
+        
+    }
+
+    method void gameloop(){
+    	var Paddle temp;
+        var char key;
+        
+        var bool exit;
+        
+        let exit = false;
+        
+        while (~(exit)) {
+
+            do Sys.wait(5);
+            do ball.move();
+            do paddle.draw();
+            let temp = ai.get_pad();
+            do temp.draw();
+           
+            do ai.move(ball.gety(), ball.getx());
+           
+            let key = Keyboard.keyPressed();
+           
+            if (key = 131) {
+			    do paddle.set_dir(1);
+			    do paddle.move();
+			    let key = 0;
+		    }
+
+		    if (key = 133) {
+			    do paddle.set_dir(-1);
+			    do paddle.move();
+			    let key = 0;
+		    }
+          
+           
+            if ((ball.getx() < (19)) | (ball.getx() > (512 - 25))){
+                do ball.flipvx();
+            } if ((ball.gety() < (15 + 15)) | (ball.gety() > (256 - 15))){
+                do ball.flipvy();
+            }
+            
+            
+            if (( (ball.gety()+10 < paddle.get_y()) | (ball.gety() - 10 > (paddle.get_y()+paddle.get_h()))) & (ball.getx() < 20) ) {
+            		
+				let exit = true;
+				do Output.printString("LOSER");
+		    }
+            
+        }
+        
+        return;
+    }
+}

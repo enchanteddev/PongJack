@@ -1,0 +1,51 @@
+class AI {
+	
+	field int max_speed;
+	field Paddle paddle;
+
+	constructor AI new (int max, Paddle p) {
+		
+		let max_speed = max;
+		let paddle =  p;
+		return this;
+
+	}
+
+
+	method void move (int ballY, int ballX) {
+
+		var int center, getx, geth;
+		let getx = paddle.get_y();
+		let geth = paddle.get_h();
+		let center = (getx + geth) / 2;
+		
+		
+		
+		
+		if ((ballY < center) & ballX > 300) {
+			do paddle.set_dir(1);
+			do paddle.move();
+		}
+
+		if ((ballY > center) & ballX > 300) {
+			do paddle.set_dir(-1);
+			do paddle.move();
+			
+		}
+
+		return;
+	
+	}
+		
+	method Paddle get_pad() { 
+		return paddle; 
+	}
+
+
+	method void dispose() {
+
+		do Memory.deAlloc(this);
+		return;
+	}
+
+}
