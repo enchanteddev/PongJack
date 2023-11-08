@@ -41,7 +41,7 @@ class AI {
 		return paddle; 
 	}
 
- 
+
 	method void dispose() {
 
 		do Memory.deAlloc(this);

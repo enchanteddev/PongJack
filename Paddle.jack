@@ -1,3 +1,4 @@
+
 class Paddle {
 	
 	field int x, y, w, h;
@@ -25,13 +26,12 @@ class Paddle {
 		do Screen.setColor(true);
 		do Screen.drawRectangle(x, y, x+w, y+h);
 		return;
-        
 	}
 
 	method void move () {
 		
 		if (cur_dir = 1) {
-			if (y > 10) {
+			if (y > 15) {
 				do Screen.setColor(false);
 				do Screen.drawRectangle(x, (y + h) - (max_speed - 1), x+w, y+h);
 				let y = y - max_speed;
@@ -41,7 +41,7 @@ class Paddle {
 		}	
 
 		if (cur_dir = -1) {
-			if (y < 150) {
+			if (y < (250 - h)) {
 				do Screen.setColor(false);
 		 		do Screen.drawRectangle(x, y, x+w, y + (max_speed - 1));
 		 		let y = y + max_speed;

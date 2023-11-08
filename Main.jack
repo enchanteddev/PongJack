@@ -1,20 +1,15 @@
 class Main{
     function void main(){
-
         var Ball ball;
         var Paddle paddle, temp;
         var AI ai;
         var Game x;
-        
         let ball = Ball.new(50, 50, 1 ,1, 10);
-        let paddle = Paddle.new(5, 75, 7, 100, 2, 0);
-        let temp = Paddle.new(495, 125, 7, 100, 2, 0);
-        let ai = AI.new(2, temp);
-        
+        let paddle = Paddle.new(5, 75, 7, 60, 2, 0);
+        let temp = Paddle.new(495, 125, 7, 60, 1, 0);
+        let ai = AI.new(1, temp);
         let x = Game.new(ball, paddle, ai);
-        
         do x.gameloop();
-        
-       return;
-    }
+        return;
+    }
 }
