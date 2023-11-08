@@ -4,9 +4,9 @@ class Main{
         var Paddle paddle, temp;
         var AI ai;
         var Game x;
-        let ball = Ball.new(50, 50, 1 ,1, 10);
-        let paddle = Paddle.new(5, 75, 7, 60, 2, 0);
-        let temp = Paddle.new(495, 125, 7, 60, 1, 0);
+        let ball = Ball.new(256, 128, -4 ,4, 7, 8);
+        let paddle = Paddle.new(5, 75, 7, 80, 7, 0);
+        let temp = Paddle.new(495, 125, 7, 80, 6, 0);
         let ai = AI.new(1, temp);
         let x = Game.new(ball, paddle, ai);
         do x.gameloop();

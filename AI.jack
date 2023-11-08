@@ -14,20 +14,20 @@ class AI {
 
 	method void move (int ballY, int ballX) {
 
-		var int center, getx, geth;
-		let getx = paddle.get_y();
+		var int center, gety, geth;
+		let gety = paddle.get_y();
 		let geth = paddle.get_h();
-		let center = (getx + geth) / 2;
+		let center = (gety + geth) / 2;
 		
 		
 		
 		
-		if ((ballY < center) & ballX > 300) {
+		if ((ballY < center) & (ballX > 256)) {
 			do paddle.set_dir(1);
 			do paddle.move();
 		}
 
-		if ((ballY > center) & ballX > 300) {
+		if ((ballY > center) & (ballX > 256)) {
 			do paddle.set_dir(-1);
 			do paddle.move();
 			

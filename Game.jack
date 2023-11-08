@@ -9,19 +9,39 @@ class Game{
         return this;
     }
 
+    method void drawScore(int pScore, int aScore){
+        do Output.moveCursor(0, 0);
+        do Output.printString("Player: ");
+        do Output.printInt(pScore);
+        do Output.printString("    AI: ");
+        do Output.printInt(aScore);
+        return;
+    }
+
     method void gameloop(){
         var Paddle temp;
         var char key;
-        
         var bool exit;
+        var int pScore, aScore;
+        var int ballR, paddleW, paddleH;
+
+        let pScore = 0;
+        let aScore = 0;
         
         let exit = false;
+        let ballR = ball.getr();
+        let paddleW = paddle.get_w();
+        let paddleH = paddle.get_h();
+
+        do drawScore(pScore, aScore);
+        do Screen.drawRectangle(1, 13, 510, 254);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(3, 15, 508, 252);
         
         while (~(exit)) {
-            do Sys.wait(5);
+            do Sys.wait(32);
            
             do ball.move();
-          
             do paddle.draw();
             let temp = ai.get_pad();
             do temp.draw();
@@ -33,28 +53,43 @@ class Game{
             if (key = 131) {
                 do paddle.set_dir(1);
                 do paddle.move();
-                let key = 0;
             }
             if (key = 133) {
                 do paddle.set_dir(-1);
                 do paddle.move();
-                let key = 0;
             }
             
            
-            if ((ball.getx() < (19)) | (ball.getx() > (512 - 25))){
-                do ball.flipvx();
-            } if ((ball.gety() < (15 + 15)) | (ball.gety() > (256 - 15))){
+            if ((ball.gety() < (18 + ballR)) | (ball.gety() > (240 - ballR))){
                 do ball.flipvy();
             }
-            
-            
-            if (( (ball.gety()+10 < paddle.get_y()) | (ball.gety() - 10 > (paddle.get_y()+paddle.get_h()))) & (ball.getx() < 20) ) {
-            		
-				let exit = true;
-				do Output.printString("LOSER");
+            if ((ball.getx() < (paddleW + ballR))){
+                if ((ball.gety() > paddle.get_y()) & (ball.gety() < (paddleH + paddle.get_y()))){
+                    do ball.flipvx();
+                    if (key > 0){
+                        do ball.addVY(paddle.get_vy());
+                    }
+                } else {
+                    let aScore = aScore + 1;
+                    do drawScore(pScore, aScore);
+                    do Sys.wait(500);
+                    do ball.reset();
+                }
             }
-            
+            if (((ball.getx() + ballR) > (512 - paddleW))){
+                if ((ball.gety() > temp.get_y()) & (ball.gety() < (paddleH + temp.get_y()))){
+                    do ball.flipvx();
+                    if (key > 0){
+                        do ball.addVY(paddle.get_vy());
+                    }
+                } else {
+                    let pScore = pScore + 1;
+                    do drawScore(pScore, aScore);
+                    do Sys.wait(500);
+                    do ball.reset();
+                }
+            }
+            let key = 0;
         }        
         return;
     }

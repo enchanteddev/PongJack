@@ -31,7 +31,7 @@ class Paddle {
 	method void move () {
 		
 		if (cur_dir = 1) {
-			if (y > 15) {
+			if (y > 20) {
 				do Screen.setColor(false);
 				do Screen.drawRectangle(x, (y + h) - (max_speed - 1), x+w, y+h);
 				let y = y - max_speed;
@@ -60,6 +60,8 @@ class Paddle {
 	method int get_w() { return w; }
 
 	method int get_h() { return h; }
+
+	method int get_vy() { return 0 - (max_speed * cur_dir); }
 
 
 	method void dispose () {

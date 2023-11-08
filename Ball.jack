@@ -4,23 +4,35 @@ class Ball{
     field int vx;
     field int vy;
     field int r;
+    field int ogx, ogy, ogvx, ogvy;
+    field int max_speed;
 
-    constructor Ball new(int x_, int y_, int vx_, int vy_, int r_){
+    constructor Ball new(int x_, int y_, int vx_, int vy_, int r_, int maxX){
         let x = x_;
         let y = y_;
+        let ogx = x_;
+        let ogy = y_;
         let vx = vx_;
         let vy = vy_;
+        let ogvx = vx_;
+        let ogvy = vy_;
         let r = r_;
+        let max_speed = maxX;
 
         return this;
     }
 
     method void move(){
-        do Screen.setColor(false);
-        do Screen.drawCircle(x, y, r);
+        do erase();
         let x = x + vx;
         let y = y + vy;
         do Screen.setColor(true);
+        do Screen.drawCircle(x, y, r);
+        return;
+    }
+
+    method void erase(){
+        do Screen.setColor(false);
         do Screen.drawCircle(x, y, r);
         return;
     }
@@ -45,6 +57,30 @@ class Ball{
 
     method void flipvy(){
         let vy = 0 - vy;
+        return;
+    }
+
+    method void reset(){
+        do erase();
+        let x = ogx;
+        let y = ogy;
+        let vx = ogvx;
+        let vy = ogvy;
+        return;
+    }
+
+    method void addVY(int newvy){
+        var int temp;
+        let temp = vy + newvy;
+        if ((temp < max_speed) & (temp > (0 - max_speed))){
+            let vy = temp;
+        } else {
+            if (temp > 0){
+                let vy = max_speed;
+            } else {
+                let vy = 0 - max_speed;
+            }
+        }
         return;
     }
 }
