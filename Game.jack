@@ -10,7 +10,7 @@ class Game{
     }
 
     method void gameloop(){
-    		var Paddle temp;
+        var Paddle temp;
         var char key;
         
         var bool exit;
@@ -18,29 +18,29 @@ class Game{
         let exit = false;
         
         while (~(exit)) {
-           do Sys.wait(5);
+            do Sys.wait(5);
            
             do ball.move();
           
-		do paddle.draw();
-          let temp = ai.get_pad();
-          do temp.draw();
+            do paddle.draw();
+            let temp = ai.get_pad();
+            do temp.draw();
            
-        //   do ai.move(ball.gety(), ball.getx());
+            do ai.move(ball.gety(), ball.getx());
            
-          let key = Keyboard.keyPressed();
+            let key = Keyboard.keyPressed();
            
-          if (key = 131) {
-			do paddle.set_dir(1);
-			do paddle.move();
-			let key = 0;
-		}
-		if (key = 133) {
-			do paddle.set_dir(-1);
-			do paddle.move();
-			let key = 0;
-		}
-          
+            if (key = 131) {
+                do paddle.set_dir(1);
+                do paddle.move();
+                let key = 0;
+            }
+            if (key = 133) {
+                do paddle.set_dir(-1);
+                do paddle.move();
+                let key = 0;
+            }
+            
            
             if ((ball.getx() < (19)) | (ball.getx() > (512 - 25))){
                 do ball.flipvx();
@@ -53,13 +53,9 @@ class Game{
             		
 				let exit = true;
 				do Output.printString("LOSER");
-		}
+            }
             
-        }
-        
-        
-        
-        
+        }        
         return;
     }
 }
