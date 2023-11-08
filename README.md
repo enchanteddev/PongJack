@@ -1,2 +1,2 @@
 # Pong-Jack
-Stoopid game
+
